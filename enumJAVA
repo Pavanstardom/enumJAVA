@@ -1,0 +1,94 @@
+import java.util.*;
+enum doctors
+{
+	Akash(1000,"cardiologist"),pavan(2000,"Neurologist"),mani(3000,"Nephrologist"),amar(4000," Oncologist ");
+	public int fee;
+	public String specialization;
+	doctors(int fee,String specialization)
+	{
+		this.fee=fee;
+		this.specialization=specialization;
+	}
+	public int getfee()
+	{
+		return fee;
+	}
+	public String getspecialization()
+	{
+		return specialization;
+	}
+}
+class patient
+{
+	String patient_name;
+	int age;
+	int patient_id;
+	patient(String patient_name,int age,int patient_id)
+	{
+		this.patient_name=patient_name;
+		this.age=age;
+		this.patient_id=patient_id;
+	}
+	void display()
+	{
+		System.out.println("Patient name="+patient_name);
+		System.out.println("patient_age="+age);
+		System.out.println("patient Id = "+patient_id);
+	}
+}
+class doctor
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int a;
+		ArrayList<patient> al=new ArrayList<patient>();
+		ArrayList<doctors> ad = new ArrayList<doctors>();
+		System.out.print("Enter the Totoal no:of Records:=");
+		int n = sc.nextInt();
+		patient [] obj = new patient[n];
+		for(int i=0;i<n;i++)
+		{
+			System.out.print("Enter the patient name=");
+			String name = sc.next();
+			System.out.print("Enter the patient age=");
+			int ag = sc.nextInt();
+			System.out.println("Enter the patient Id =");
+		    int Id = sc.nextInt();
+		 
+			obj[i]= new patient(name,ag,Id);
+
+		}
+		System.out.println("\n");
+		doctors[] d = doctors.values();
+		System.out.println("   NAME"+"        "+"SPECIALIZATION"+"              "+"Fee");
+		for(doctors d1:d)
+		 {
+			System.out.println(d1.ordinal()+1+"."+d1+"=======>"+d1.getspecialization()+"===============>"+d1.getfee());
+		 }
+	    
+	      
+		  		System.out.println("DISPALY RECORDS OF THE PATIENT and DOCTOR");
+			
+	      for(int i=0;i<n;i++)
+			{
+				System.out.print("Enter The Choice for "+ i +"  patient==");
+	      		a=sc.nextInt();
+				al.add(obj[i]);
+				ad.add(d[a-1]);
+			}
+			for(patient p:al)
+			   {
+				System.out.println("DISPLAY RECORD OF THE PATIENT");
+				p.display();
+				System.out.print("\n");
+				System.out.println("DISPLAY RECORD OF THE DOCTOR ");
+				for(doctors d1:ad)
+			     {
+				System.out.println(d1.ordinal()+1+"."+d1+"=======>"+d1.getspecialization()+"===============>"+d1.getfee());
+			     }
+		     	}
+			
+		
+	}
+}
